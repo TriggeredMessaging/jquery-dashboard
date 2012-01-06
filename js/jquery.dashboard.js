@@ -619,7 +619,7 @@
             }
             return false;
         });
-
+/*
         $('#' + dashboard.id + ' .' + opts.widgetHeaderClass).live('mouseover', function() {
             $(this).find('.' + opts.iconsClass).removeClass("hidden");
         });
@@ -627,6 +627,8 @@
         $('#' + dashboard.id + ' .' + opts.widgetHeaderClass).live('mouseout', function() {
             $(this).find('.' + opts.iconsClass).addClass("hidden");
         });
+
+        */
 
         $('body').click(function() {
             $('.' + opts.menuClass).hide();
@@ -697,7 +699,6 @@
             bindSelectLayout();
         });
 
-
         dashboard.element.live('dashboardStateChange', function() {
             if(typeof opts.stateChangeUrl != 'undefined' && opts.stateChangeUrl != null && opts.stateChangeUrl != '') {
                 $.ajax({type: 'POST',
@@ -720,7 +721,6 @@
                 });
             }
         });
-
 
         dashboard.element.live('dashboardCloseLayoutDialog', function() {
             // close the dialog
@@ -760,10 +760,10 @@
                             }
                         });
 
-
                     });
 
                 } else {
+                    debugger;
                     // set the new layout, but first move the dashboard to a temp
                     var temp = $('<div style="display:none" id="tempdashboard"></div>');
                     temp.appendTo($("body"));
@@ -833,9 +833,6 @@
             dashboard.element.trigger('addWidgetDialogWidgetsLoaded');
         });
 
-
-
-
         $('.' + addOpts.addWidgetClass).live('click', function() {
             var widget = dashboard.widgetsToAdd[$(this).attr("id").replace('addwidget', '')];
             dashboard.log('dashboardAddWidget event thrown', 2);
@@ -891,12 +888,11 @@
         return dashboard;
     };
 
-
     // Public static properties of dashboard.  Default settings.
     $.fn.dashboard.defaults = {
         debuglevel: 3,
         json_data: {},
-        loadingHtml: '<div class="loading"><img alt="Loading, please wait" src="../themes/default/loading.gif" /><p>Loading...</p></div>',
+        loadingHtml: '<div class="loading"><img alt="Loading, please wait" src="/media/lib/dashboard/themes/default/loading.gif" /><p>Loading...</p></div>',
         emptyColumnHtml: 'Drag your widgets here',
         widgetTemplate: 'widgettemplate',
         columnPrefix: 'column-',
